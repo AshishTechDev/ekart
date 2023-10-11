@@ -32,12 +32,17 @@ app.use((req, res, next) => {
   app.use("/api", shopRoutes);
   app.use("/api", authRoutes);
 
+  app.use("/", (req, res, next) => {
+    res.sendFile("Backend is Up!!!");
+    next();
+  });
+
 mongoose
   .connect(MONGODB_URI)
   .then(() => {
 
-    app.listen(4000, "localhost", () => {
-      console.log("Backend is running at port 4000");
+    app.listen(process.env.PORT, "localhost", () => {
+      console.log("Backend is running at port " + process.env.PORT);
     
       // User.create({ email: "user@example.com", password: "password"});
     });

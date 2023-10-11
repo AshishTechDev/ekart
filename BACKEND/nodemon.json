@@ -3,6 +3,7 @@
         "DB_USERNAME" : "superkingsashish",
         "DB_PASSWORD" : "Ashishb18",
         "DB_NAME" : "ekart4",
-        "JWT_KEY" : "It is a secret key"
+        "JWT_KEY" : "It is a secret key",
+        "PORT": 4000
     }
 }
