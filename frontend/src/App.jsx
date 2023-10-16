@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./shop/pages/Home";
@@ -14,10 +15,13 @@ import ResetPassword from "./Auth/pages/ResetPassword";
 import SetPassword from "./Auth/pages/SetPassword";
 import Error404 from "./Error404";
 import AuthContext from "./context/Auth-Context";
+import ProtectedRoute from "./util/ProtectedRoute";
+
 import { useState } from "react";
 import { useCallback } from "react";
 
 export default function App() {
+  const ctx = useContext(AuthContext);
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -57,30 +61,6 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Cart />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/address"
-          element={
-            <ProtectedRoute>
-              <Address />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/create-payment-intent"
-          element={
-            <ProtectedRoute>
-              <StripePayment />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/orders"
-          element={
-            <ProtectedRoute>
-              <Orders />
             </ProtectedRoute>
           }
         />
